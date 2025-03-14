@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <div class="search">
+    <!-- Wybór kategorii -->
+    <mat-form-field class="custom-mat-form-field sides" appearance="outline">
+      <mat-label>Wybierz kategorię</mat-label>
+      <mat-select [(value)]="selectedCategoryValue">
+        <mat-option [value]="null">Wszystkie</mat-option>
+        @for (category of productService.categories(); track category) {
+          <mat-option [value]="category">
+            {{ category.charAt(0).toUpperCase() + category.slice(1) }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Pole tekstowe do wyszukiwania -->
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Szukaj produktu..."
+      class="custom-input"
+    />
+    <span class="sides"></span>
+  </div>
+</div>
+
+<!-- Lista produktów -->
+<div>
+  <div class="wrapper">
+    <ul class="products">
+      @for (product of filteredProducts(); track product.id) {
+        <li class="products__card">
+          <img class="products__img" [src]="product.photoUrl" alt="{{ product.name }}" width="100" />
+          <div class="products__text-box">
+            <p class="products__category">{{ product.category }}</p>
+            <h3 class="products__title">{{ product.name }}</h3>
+            <p class="products__description">{{ product.description }}</p>
+          </div>
+          <p class="products__price">
+            <span>
+              Cena: {{ product.price }}$
+            </span>
+            <span>
+              <mat-icon>add_shopping_cart</mat-icon>
+            </span>
+          </p>
+        </li>
+      }
+    </ul>
+
+    <!-- Komunikat, gdy brak wyników -->
+    @if (filteredProducts().length === 0) {
+      <p>Brak produktów spełniających kryteria wyszukiwania.</p>
+    }
+  </div>
+</div>

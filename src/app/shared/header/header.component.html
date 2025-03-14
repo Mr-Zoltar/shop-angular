@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="navbar__brand">
+    <h1>LOGO</h1>
+    <img src="" alt="">
+  </div>
+  <div class="navbar__items">
+    <!-- Shopping cart z badge -->
+    <a href="/" class="navbar__item">
+      <mat-icon matBadge="{{ cartCount() }}" matBadgeColor="warn" [matBadgeHidden]="isBadgeHidden">
+        shopping_cart
+      </mat-icon>
+    </a>
+    <!-- Login -->
+    <a href="/" class="navbar__item"><mat-icon>login</mat-icon></a>
+    <!-- Account -->
+    <a href="/" class="navbar__item"><mat-icon>person</mat-icon></a>
+  </div>
+</nav>

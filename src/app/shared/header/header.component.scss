@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1rem;
+  background-color: #333;
+  color: #fff;
+
+  &__brand {
+  }
+
+  &__items {
+  }
+
+  &__item {
+    margin-left: 1rem;
+  }
+}
